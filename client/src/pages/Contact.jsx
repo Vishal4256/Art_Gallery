@@ -39,8 +39,8 @@ const Contact = () => {
           
           <div>
             <h3 className="text-xs uppercase tracking-[0.3em] font-sans text-gray-500 mb-2">Contact</h3>
-            <p className="text-white text-lg font-light mb-1">inquiries@luminagallery.art</p>
-            <p className="text-white text-lg font-light">+1 (212) 555-0199</p>
+            <p className="text-white text-lg font-light mb-1">vishal42564256@gmail.com</p>
+            <p className="text-white text-lg font-light">8092982304</p>
           </div>
           
           <div>
