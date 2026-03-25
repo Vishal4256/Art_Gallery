@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark-bg: var(--bg-main);
+  --color-dark-surface: var(--bg-surface);
+  --color-primary: var(--text-main);
+  --color-secondary: var(--text-muted);
+  --color-accent: #e5e5e5;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+:root {
+  --bg-main: #0a0a0a;
+  --bg-surface: #121212;
+  --text-main: #f8f8f8;
+  --text-muted: #a3a3a3;
+  --border-main: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='light'] {
+  --bg-main: #f8f8f5;
+  --bg-surface: #ffffff;
+  --text-main: #121212;
+  --text-muted: #666666;
+  --border-main: rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--bg-main)] text-[var(--text-main)] font-sans antialiased overflow-x-hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+}
+
+/* Custom Scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Image reveal animation utility classes */
+.reveal-img-container {
+  overflow: hidden;
+}
+.reveal-img {
+  transform: scale(1.1);
+  transform-origin: center;
+}

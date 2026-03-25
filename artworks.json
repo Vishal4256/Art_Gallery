@@ -1,0 +1,104 @@
+[
+  {
+    "_id": "69b1a8c5e38f606230fae687",
+    "title": "Ethereal Abstraction I",
+    "description": "The first piece in the Ethereal series, blending dark hues with vivid strokes of light to simulate an emotional landscape.",
+    "artist": {
+      "_id": "69b1a8c5e38f606230fae680",
+      "name": "Elena Rostova",
+      "image": "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=600&auto=format&fit=crop"
+    },
+    "price": 4500,
+    "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=800&auto=format&fit=crop",
+    "category": "Painting",
+    "status": "available",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.438Z",
+    "updatedAt": "2026-03-11T17:39:17.438Z"
+  },
+  {
+    "_id": "69b1a8c5e38f606230fae688",
+    "title": "Neon Geometry",
+    "description": "A striking digital piece combining mathematical precision with vibrant neo-noir aesthetics.",
+    "artist": {
+      "_id": "69b1a8c5e38f606230fae680",
+      "name": "Elena Rostova",
+      "image": "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=600&auto=format&fit=crop"
+    },
+    "price": 3200,
+    "image": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop",
+    "category": "Digital",
+    "status": "available",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.439Z",
+    "updatedAt": "2026-03-11T17:39:17.439Z"
+  },
+  {
+    "_id": "69b1a8c5e38f606230fae689",
+    "title": "Concrete Whisper",
+    "description": "A hyper-realistic black and white photograph of a solitary figure against towering brutalist structures.",
+    "artist": {
+      "_id": "69b1a8c5e38f606230fae682",
+      "name": "Sophia Lin",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop"
+    },
+    "price": 1800,
+    "image": "https://images.unsplash.com/photo-1513682121497-8bbc25d0c8cc?q=80&w=800&auto=format&fit=crop",
+    "category": "Photography",
+    "status": "reserved",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.439Z",
+    "updatedAt": "2026-03-11T17:39:17.439Z"
+  },
+  {
+    "_id": "69b1a8c5e38f606230fae68a",
+    "title": "Fractured Reality",
+    "description": "An exploration of multidimensional space using mixed media.",
+    "artist": {
+      "_id": "69b1a8c5e38f606230fae682",
+      "name": "Sophia Lin",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop"
+    },
+    "price": 6500,
+    "image": "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=800&auto=format&fit=crop",
+    "category": "Mixed Media",
+    "status": "available",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.439Z",
+    "updatedAt": "2026-03-11T17:39:17.439Z"
+  },
+  {
+    "_id": "69b1a8c5e38f606230fae68b",
+    "title": "Liquid Gold",
+    "description": "Oil on canvas piece simulating the flow of molten metal in a serene environment.",
+    "artist": {
+      "_id": "69b1a8c5e38f606230fae680",
+      "name": "Elena Rostova",
+      "image": "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=600&auto=format&fit=crop"
+    },
+    "price": 5000,
+    "image": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop",
+    "category": "Painting",
+    "status": "sold",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.439Z",
+    "updatedAt": "2026-03-11T17:39:17.439Z"
+  },
+  {
+    "_id": "69b1a8c5e38f606230fae68c",
+    "title": "Silicon Mind",
+    "description": "A digital representation of artificial consciousness awakening.",
+    "artist": {
+      "_id": "69b1a8c5e38f606230fae681",
+      "name": "Marcus Vance",
+      "image": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?q=80&w=600&auto=format&fit=crop"
+    },
+    "price": 2800,
+    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+    "category": "Digital",
+    "status": "available",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.439Z",
+    "updatedAt": "2026-03-11T17:39:17.439Z"
+  }
+]

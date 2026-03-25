@@ -1,0 +1,44 @@
+[
+  {
+    "socialLinks": {
+      "instagram": "@elenarostova_art",
+      "twitter": "@erostova",
+      "website": ""
+    },
+    "_id": "69b1a8c5e38f606230fae680",
+    "name": "Elena Rostova",
+    "bio": "Born in 1985, Elena Rostova has quickly become one of the most sought-after contemporary painters of her generation. Her ethereal abstractions explore the boundaries between light and shadow.",
+    "image": "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=600&auto=format&fit=crop",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.428Z",
+    "updatedAt": "2026-03-11T17:39:17.428Z"
+  },
+  {
+    "socialLinks": {
+      "instagram": "@marcusvance",
+      "website": "marcusvance.studio",
+      "twitter": ""
+    },
+    "_id": "69b1a8c5e38f606230fae681",
+    "name": "Marcus Vance",
+    "bio": "A digital pioneer and mixed-media sculptor, Marcus Vance merges traditional carving techniques with generative algorithms to create breathtaking physical-digital hybrid works.",
+    "image": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?q=80&w=600&auto=format&fit=crop",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.429Z",
+    "updatedAt": "2026-03-11T17:39:17.429Z"
+  },
+  {
+    "socialLinks": {
+      "instagram": "@sophialin_lens",
+      "twitter": "",
+      "website": ""
+    },
+    "_id": "69b1a8c5e38f606230fae682",
+    "name": "Sophia Lin",
+    "bio": "Renowned for her large-scale hyper-realistic photography, Sophia Lin captures the fleeting moments of urban solitude and brutalist architecture.",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+    "__v": 0,
+    "createdAt": "2026-03-11T17:39:17.429Z",
+    "updatedAt": "2026-03-11T17:39:17.429Z"
+  }
+]
