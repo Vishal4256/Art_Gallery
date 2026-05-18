@@ -60,17 +60,17 @@ const Navbar = () => {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[var(--bg-main)]/90 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            <Link to="/" className="text-2xl tracking-[0.2em] font-serif text-[var(--text-main)] uppercase transition-colors">
+            <Link to="/" className="text-2xl tracking-[0.2em] font-serif text-[var(--text-main)] uppercase transition-colors mr-24">
               Lumina
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-10 items-center">
+            <div className="hidden md:flex space-x-8 items-center">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 font-bold ${
+                  className={`text-[10px] uppercase tracking-[0.2em] whitespace-nowrap transition-colors duration-300 font-bold ${
                     location.pathname === link.path ? 'text-[var(--text-main)] underline underline-offset-8' : 'text-[var(--text-muted)] hover:text-[var(--text-main)]'
                   }`}
                 >
@@ -110,9 +110,6 @@ const Navbar = () => {
                     >
                       Logout ({user.name.split(' ')[0]})
                     </button>
-                    <span className="px-3 py-1 text-[8px] tracking-[0.2em] uppercase bg-white/10 text-white/80 border border-white/10 rounded-full font-bold font-sans">
-                      {user.role}
-                    </span>
                   </div>
                 </div>
               ) : (
@@ -176,7 +173,7 @@ const Navbar = () => {
                       onClick={handleLogout}
                       className="inline-block mt-4 w-full text-center py-5 bg-white/5 border border-white/10 text-white text-xs uppercase tracking-widest transition-all duration-300 rounded-full font-bold"
                     >
-                      Logout ({user.name} — {user.role.toUpperCase()})
+                      Logout ({user.name})
                     </button>
                   </>
                 ) : (
