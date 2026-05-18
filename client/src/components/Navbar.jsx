@@ -47,7 +47,6 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'Home', path: '/' },
     { name: 'Gallery', path: '/gallery' },
     { name: '3D Gallery', path: '/virtual-gallery' },
     { name: 'Artists', path: '/artists' },
