@@ -83,7 +83,6 @@ export const forgotPassword = asyncHandler(async (req, res) => {
   user.resetOTP = otp;
   user.resetOTPExpire = Date.now() + 10 * 60 * 1000;
   await user.save();
-
   try {
     const htmlMessage = `
       <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
@@ -97,6 +96,19 @@ export const forgotPassword = asyncHandler(async (req, res) => {
         <p style="color: #999; font-size: 11px; text-align: center; margin-top: 20px;">This OTP is valid for 10 minutes only. If you did not make this request, you can safely ignore this email.</p>
       </div>
     `;
+
+    // Local Development Fallback: If Gmail SMTP is not set up, print the OTP to the console log and succeed!
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || process.env.EMAIL_USER.includes('your_gmail')) {
+      console.log('\n======================================================');
+      console.log('✉️  [LOCAL DEV MODE] SMTP CREDENTIALS NOT CONFIGURED YET');
+      console.log(`🔑 PASSWORD RESET OTP FOR ${user.email} IS:`);
+      console.log(`               👉  ${otp}  👈`);
+      console.log('======================================================\n');
+      
+      return res.json({ 
+        message: 'OTP generated in Local Development Mode! Since SMTP credentials are not configured in server/.env, we printed the OTP to your server console window.' 
+      });
+    }
 
     await sendEmail({
       email: user.email,
