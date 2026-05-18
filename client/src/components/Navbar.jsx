@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Search } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,12 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +49,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Gallery', path: '/gallery' },
+    { name: '3D Gallery', path: '/virtual-gallery' },
     { name: 'Artists', path: '/artists' },
     { name: 'Exhibitions', path: '/exhibitions' },
     { name: 'About', path: '/about' },
@@ -89,9 +97,30 @@ const Navbar = () => {
                 {theme === 'dark' ? <Sun size={18} strokeWidth={1.5} /> : <Moon size={18} strokeWidth={1.5} />}
               </button>
 
-              <Link to="/login" className={`px-8 py-3 bg-[var(--text-main)] text-[var(--bg-main)] text-[10px] uppercase tracking-[0.2em] transition-all duration-300 rounded-full font-bold hover:opacity-80 shadow-md`}>
-                Login
-              </Link>
+              {user ? (
+                <div className="flex items-center space-x-6">
+                  {user.role === 'admin' && (
+                    <Link to="/dashboard" className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] hover:text-[var(--text-main)] font-bold transition-colors">
+                      Dashboard
+                    </Link>
+                  )}
+                  <div className="flex items-center gap-3">
+                    <button 
+                      onClick={handleLogout}
+                      className="px-8 py-3 bg-white/5 border border-white/10 text-white text-[10px] uppercase tracking-[0.2em] transition-all duration-300 rounded-full font-bold hover:bg-white/10"
+                    >
+                      Logout ({user.name.split(' ')[0]})
+                    </button>
+                    <span className="px-3 py-1 text-[8px] tracking-[0.2em] uppercase bg-white/10 text-white/80 border border-white/10 rounded-full font-bold font-sans">
+                      {user.role}
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <Link to="/login" className={`px-8 py-3 bg-[var(--text-main)] text-[var(--bg-main)] text-[10px] uppercase tracking-[0.2em] transition-all duration-300 rounded-full font-bold hover:opacity-80 shadow-md`}>
+                  Login
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Button + Theme/Search */}
@@ -134,12 +163,31 @@ const Navbar = () => {
                     {link.name}
                   </Link>
                 ))}
-                <Link
-                  to="/login"
-                  className="inline-block mt-4 w-full text-center py-5 bg-[var(--text-main)] text-[var(--bg-main)] text-xs uppercase tracking-widest transition-all duration-300 rounded-full font-bold"
-                >
-                  Login
-                </Link>
+                {user ? (
+                  <>
+                    {user.role === 'admin' && (
+                      <Link
+                        to="/dashboard"
+                        className="text-3xl uppercase tracking-[0.3em] font-serif text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors"
+                      >
+                        Dashboard
+                      </Link>
+                    )}
+                    <button
+                      onClick={handleLogout}
+                      className="inline-block mt-4 w-full text-center py-5 bg-white/5 border border-white/10 text-white text-xs uppercase tracking-widest transition-all duration-300 rounded-full font-bold"
+                    >
+                      Logout ({user.name} — {user.role.toUpperCase()})
+                    </button>
+                  </>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="inline-block mt-4 w-full text-center py-5 bg-[var(--text-main)] text-[var(--bg-main)] text-xs uppercase tracking-widest transition-all duration-300 rounded-full font-bold"
+                  >
+                    Login
+                  </Link>
+                )}
               </div>
             </motion.div>
           )}

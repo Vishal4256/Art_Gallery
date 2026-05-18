@@ -27,6 +27,11 @@ const artworkSchema = new mongoose.Schema({
     required: true,
     enum: ['Painting', 'Sculpture', 'Photography', 'Digital', 'Mixed Media', 'Other']
   },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   status: {
     type: String,
     required: true,

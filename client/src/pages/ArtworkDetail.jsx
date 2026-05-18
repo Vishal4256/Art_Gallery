@@ -45,6 +45,15 @@ const ArtworkDetail = () => {
     fetchArtwork();
   }, [id]);
 
+  const getImageUrl = (art) => {
+    if (!art.image || art.image.includes('undefined')) {
+      return `https://ui-avatars.com/api/?name=${encodeURIComponent(art.title)}&background=111&color=fff&size=512`;
+    }
+    if (art.image.startsWith('http')) return art.image;
+    if (art.image.startsWith('/uploads')) return `${api.defaults.baseURL.replace('/api', '')}${art.image}`;
+    return art.image;
+  };
+
   useGSAP(() => {
     if (!loading && artwork) {
       const tl = gsap.timeline();
@@ -75,9 +84,12 @@ const ArtworkDetail = () => {
       setArtwork({ ...artwork, status: 'reserved' });
     } catch (error) {
       if (error.response?.status === 401) {
+        alert('Your session has expired. Please log in again.');
+        localStorage.removeItem('userInfo');
         navigate('/login');
       } else {
-        alert(error.response?.data?.message || 'Error reserving artwork');
+        const msg = error.response?.data?.message || 'The museum server encountered an issue. Please try again later.';
+        alert(msg);
       }
     } finally {
       setReserving(false);
@@ -107,7 +119,7 @@ const ArtworkDetail = () => {
             className="overflow-hidden bg-[var(--bg-surface)] border border-[var(--border-main)] group"
           >
             <img 
-              src={artwork.image} 
+              src={getImageUrl(artwork)} 
               alt={artwork.title} 
               className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105" 
             />

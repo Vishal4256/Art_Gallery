@@ -31,11 +31,17 @@ const importData = async () => {
 
     console.log('Imported Users, Artists, and Exhibitions');
 
+    const adminUser = createdUsers.find(u => u.role === 'admin') || createdUsers[0];
+
     // Create random mapping of artworks to artists
     const sampleArtworks = artworks.map(artwork => {
       // Pick random artist
       const randomArtistIndex = Math.floor(Math.random() * createdArtists.length);
-      return { ...artwork, artist: createdArtists[randomArtistIndex]._id };
+      return { 
+        ...artwork, 
+        artist: createdArtists[randomArtistIndex]._id,
+        createdBy: adminUser._id
+      };
     });
 
     await Artwork.insertMany(sampleArtworks);

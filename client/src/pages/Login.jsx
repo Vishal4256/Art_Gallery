@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [isRegister, setIsRegister] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [loading, setLoading] = useState(false);
@@ -23,15 +25,10 @@ const Login = () => {
       const payload = isRegister ? formData : { email: formData.email, password: formData.password };
       
       const res = await api.post(endpoint, payload);
-      localStorage.setItem('userInfo', JSON.stringify(res.data));
+      login(res.data);
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Authentication failed');
-      // If backend not running and login used dummy, mock it for demo purpose
-      if (!err.response) {
-         localStorage.setItem('userInfo', JSON.stringify({ name: formData.name || 'Demo User', email: formData.email, token: 'demo-token' }));
-         navigate('/');
-      }
+      setError(err.response?.data?.message || 'Authentication failed. Please check if the server is running.');
     } finally {
       setLoading(false);
     }

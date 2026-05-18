@@ -28,8 +28,8 @@ const Footer = () => {
           <div>
             <h4 className="text-[var(--text-main)] uppercase tracking-[0.4em] text-[10px] font-bold mb-8 italic opacity-60">Engagement</h4>
             <ul className="space-y-4 text-xs text-[var(--text-muted)] font-medium uppercase tracking-widest">
-              <li>Inquiries: vishal42564256@gmail.com</li>
-              <li>Concierge: 8092982304</li>
+              <li>Inquiries: <a href="mailto:vishal42564256@gmail.com" className="normal-case hover:text-[var(--text-main)] transition-colors">vishal42564256@gmail.com</a></li>
+              <li>Concierge: +91-8092982304</li>
               <li>Visit: 123 Art District<br />New York, NY 10001</li>
             </ul>
           </div>

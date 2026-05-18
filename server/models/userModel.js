@@ -19,7 +19,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ['user', 'admin'],
     default: 'user'
-  }
+  },
+  wishlist: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Artwork'
+  }]
 }, { timestamps: true });
 
 // Match user entered password to hashed password in database

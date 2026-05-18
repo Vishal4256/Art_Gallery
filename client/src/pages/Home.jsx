@@ -46,6 +46,15 @@ const Home = () => {
     fetchArtists();
   }, []);
 
+  const getImageUrl = (artist) => {
+    if (!artist.image || artist.image.includes('undefined')) {
+      return `https://ui-avatars.com/api/?name=${encodeURIComponent(artist.name)}&background=111&color=fff&size=512`;
+    }
+    if (artist.image.startsWith('http')) return artist.image;
+    if (artist.image.startsWith('/uploads')) return `${api.defaults.baseURL.replace('/api', '')}${artist.image}`;
+    return artist.image;
+  };
+
   // Auto-advance slides
   useEffect(() => {
     const timer = setInterval(() => {
@@ -58,16 +67,16 @@ const Home = () => {
     // Scroll Animations for sections
     gsap.utils.toArray('.fade-up').forEach(element => {
       gsap.fromTo(element, {
-        y: 60,
+        y: 80,
         opacity: 0
       }, {
         scrollTrigger: {
           trigger: element,
-          start: 'top 85%',
+          start: 'top 90%',
         },
         y: 0,
         opacity: 1,
-        duration: 1.2,
+        duration: 1.5,
         ease: 'power3.out'
       });
     });
@@ -78,12 +87,26 @@ const Home = () => {
       }, {
         scrollTrigger: {
           trigger: element,
-          start: 'top 85%',
+          start: 'top 90%',
         },
         scaleX: 1,
         transformOrigin: 'left',
-        duration: 1.5,
+        duration: 2,
         ease: 'power4.inOut'
+      });
+    });
+
+    // Parallax Effect for Featured Artist Images
+    gsap.utils.toArray('.parallax-img').forEach(img => {
+      gsap.to(img, {
+        yPercent: 20,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: img.parentElement,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
       });
     });
   }, { scope: containerRef });
@@ -101,9 +124,9 @@ const Home = () => {
             transition={{ duration: 1.5, ease: 'easeInOut' }}
             className="absolute inset-0 z-0"
           >
-            <div className="absolute inset-0 bg-black/40 z-10" />
+            <div className="absolute inset-0 bg-black/50 z-10" />
             <motion.img 
-               initial={{ scale: 1.1 }}
+               initial={{ scale: 1.15 }}
                animate={{ scale: 1 }}
                transition={{ duration: 10, ease: 'linear' }}
                src={slides[currentSlide].image} 
@@ -145,9 +168,14 @@ const Home = () => {
             transition={{ delay: 1.5, duration: 1 }}
             className="absolute bottom-12 flex justify-center items-center gap-12"
           >
-            <Link to="/gallery" className="px-12 py-5 bg-white text-black text-xs uppercase tracking-[0.3em] font-bold hover:bg-gray-200 transition-all hover:tracking-[0.4em] shadow-2xl">
-              Explore Collection
-            </Link>
+            <div className="flex flex-col md:flex-row gap-6 mt-8">
+              <Link to="/gallery" className="px-12 py-5 bg-white text-black text-xs uppercase tracking-[0.3em] font-bold hover:bg-gray-200 transition-all hover:tracking-[0.4em] shadow-2xl text-center">
+                Explore Collection
+              </Link>
+              <Link to="/virtual-gallery" className="px-12 py-5 bg-transparent border border-white/20 text-white text-xs uppercase tracking-[0.3em] font-bold hover:bg-white hover:text-black transition-all hover:tracking-[0.4em] shadow-2xl text-center flex items-center justify-center gap-3">
+                Virtual 3D Experience
+              </Link>
+            </div>
             
             <div className="hidden md:flex gap-3">
               {slides.map((_, i) => (
@@ -188,8 +216,8 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {featuredArtists.length > 0 ? featuredArtists.map((artist, i) => (
             <Link to={`/artists/${artist._id}`} key={artist._id} className="fade-up group cursor-pointer block">
-               <div className="relative overflow-hidden aspect-[3/4] mb-6">
-                 <img src={artist.image} alt={artist.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+               <div className="relative overflow-hidden aspect-[3/4] mb-6 rounded-sm">
+                 <img src={getImageUrl(artist)} alt={artist.name} className="parallax-img absolute -top-20 -bottom-20 w-full h-[calc(100%+40px)] object-cover transition-transform duration-1000 group-hover:scale-110" />
                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                </div>
                <h4 className="text-[var(--text-main)] text-3xl font-serif mb-2">{artist.name}</h4>
@@ -198,7 +226,7 @@ const Home = () => {
           )) : (
             [1, 2, 3].map((item) => (
               <div key={item} className="fade-up group cursor-pointer">
-                 <div className="relative overflow-hidden aspect-[3/4] mb-6 block bg-[var(--bg-surface)] animate-pulse">
+                 <div className="relative overflow-hidden aspect-[3/4] mb-6 block bg-[var(--bg-surface)] animate-pulse rounded-sm">
                  </div>
                  <h4 className="text-[var(--text-main)] text-3xl font-serif mb-2 bg-[var(--bg-surface)] w-3/4 h-8"></h4>
                  <p className="text-[var(--text-muted)] uppercase tracking-widest text-xs bg-[var(--bg-surface)] w-1/2 h-4 mt-2"></p>

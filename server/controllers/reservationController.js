@@ -19,6 +19,10 @@ export const addReservation = async (req, res) => {
       return res.status(400).json({ message: 'Artwork is not available for reservation' });
     }
 
+    if (!req.user || !req.user._id) {
+      return res.status(401).json({ message: 'Not authorized, user data missing' });
+    }
+
     const reservation = new Reservation({
       user: req.user._id,
       artwork: artworkId

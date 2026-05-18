@@ -1,68 +1,67 @@
-# Lumina - Modern Art Gallery Web Application
+# Lumina: Immersive 3D Art Gallery
 
-Lumina is a premium, modern, full-stack Art Gallery Web Application built with React (Vite), Tailwind CSS, GSAP, and Node.js/Express. It features smooth UI animations, dark theme aesthetics, an artwork reservation system, and a custom API.
+A premium MERN stack virtual museum experience built with React, GSAP, and Node.js. 
 
-## Project Structure
+![3D Gallery Preview](C:/Users/visha/.gemini/antigravity/brain/6152659b-19a8-4fdb-94dd-326734042027/virtual_gallery_painting_room_1774530511800.png)
 
-- `/server` - Node.js & Express REST API backend
-- `/client` - React (Vite) frontend with Tailwind CSS and GSAP
+## 🚀 Features
 
-## Technologies Used
+### Immersive 3D Experience (No Three.js/WebGL)
+- **Virtual Museum**: Explore themed rooms (Painting, Sculpture, Digital) using horizontal scroll navigation.
+- **CSS 3D Transforms**: Simulated depth using `perspective`, `rotateY`, and `translateZ`.
+- **GSAP Animations**: Fluid scroll-based movement and card-flipping effects.
+- **Spotlight Lighting**: Museum-grade aesthetics with dynamic gradients and shadows.
 
-**Frontend:**
-- React (via Vite)
-- Tailwind CSS (v4)
-- GSAP & `@gsap/react` for complex animations
-- React Router DOM
-- Axios
-- Lucide React (Icons)
+### User Roles & Authentication
+- **User Role**: Browse the collection, enter the 3D gallery, view details, search/filter, and manage a personal wishlist.
+- **Admin Role**: Full Dashboard control to Add, Update, and Delete artworks/artists.
+- **JWT Protection**: Secure authentication with role-based access control.
 
-**Backend:**
-- Node.js & Express.js
-- MongoDB & Mongoose
-- JSON Web Tokens (JWT) & bcryptjs for Auth
-- Multer for Image Uploads
+### Advanced Capabilities
+- **Multer Image Uploads**: Direct image management on the server.
+- **Search & Filter**: Real-time filtering by category, artist, price, and keyword.
+- **Responsive Design**: Tailored for all devices with a dark-themed, premium feel.
 
-## Installation & Setup
+## 🛠️ Tech Stack
+- **Frontend**: React (Vite), Tailwind CSS, GSAP (animations), Framer Motion.
+- **Backend**: Node.js, Express.js, MongoDB (Mongoose).
+- **Security**: JSON Web Tokens (JWT), BcryptJS.
+- **Media**: Multer (File Uploads).
 
-### 1. Backend Setup
+## 📥 Installation
+
+### Prerequisites
+- Node.js (v16+)
+- MongoDB (Local or Atlas)
+
+### Setup Steps
+1. **Clone the repository**
+2. **Setup Backend**
+   ```bash
+   cd server
+   npm install
+   ```
+   Create a `.env` file in the `server` folder:
+   ```env
+   PORT=5000
+   MONGODB_URI=your_mongodb_uri
+   JWT_SECRET=your_secret_key
+   ```
+3. **Setup Frontend**
+   ```bash
+   cd ../client
+   npm install
+   ```
+4. **Run Development Server**
+   - Start Backend: `cd server && npm run dev`
+   - Start Frontend: `cd client && npm run dev`
+
+## 📊 Sample Data
+Included `seeder.js` in the server folder to populate the database with professional sample artworks and artists.
 ```bash
 cd server
-npm install
-```
-Make sure you have MongoDB running locally or a MongoDB Atlas URI. Check the `.env` file in the `server` directory.
-
-To start the backend server in development mode:
-```bash
-npm run dev
-# The server will start on http://localhost:5000
+node seeder.js
 ```
 
-### 2. Frontend Setup
-```bash
-cd client
-npm install
-```
-
-To start the frontend Vite server:
-```bash
-npm run dev
-# The frontend will start on http://localhost:5173
-```
-
-## Features Implemented
-- **Animated Hero & Scrolling**: Smooth reveals and transitions using GSAP.
-- **Gallery & Filtering**: View and filter artworks intuitively.
-- **Authentication**: JWT-based login and registration system.
-- **Reservation System**: Authenticated users can reserve available artworks.
-- **Admin Dashboard Layout**: A foundational layout for CRUD operations on artists and artworks. 
-- **Dark Theme Aesthetics**: Deep dark-mode aesthetic with custom scrollbars and minimalist typography.
-
-## API Endpoints (Brief)
-- `POST /api/auth/login` - Login user
-- `POST /api/auth/register` - Register user
-- `GET /api/artworks` - Fetch all artworks
-- `GET /api/artworks/:id` - Fetch single artwork
-- `GET /api/artists` - Fetch all artists
-- `GET /api/exhibitions` - Fetch exhibitions
-- `POST /api/reservations` - Reserve an artwork
+---
+*Built as a high-end final year project and resume demonstration of full-stack engineering and creative UI development.*

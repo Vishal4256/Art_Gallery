@@ -53,11 +53,84 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Image reveal animation utility classes */
-.reveal-img-container {
+/* Museum & 3D Gallery Utilities */
+.perspective-container {
+  perspective: 1500px;
+  perspective-origin: center;
   overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
 }
-.reveal-img {
-  transform: scale(1.1);
-  transform-origin: center;
+
+.gallery-track {
+  display: flex;
+  transform-style: preserve-3d;
+  height: 100%;
+}
+
+.gallery-room {
+  flex: 0 0 100vw;
+  height: 100vh;
+  position: relative;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.artwork-wall {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10vw;
+}
+
+.artwork-card-3d {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: #111;
+  border: 10px solid #1a1a1a;
+  box-shadow: 
+    0 50px 100px rgba(0,0,0,0.5),
+    inset 0 0 40px rgba(0,0,0,0.8);
+  transform: translateZ(50px);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.artwork-card-3d::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.floor-reflex {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30vh;
+  background: linear-gradient(to top, rgba(255,255,255,0.02) 0%, transparent 100%);
+  transform: rotateX(90deg) translateZ(-15vh);
+  pointer-events: none;
 }

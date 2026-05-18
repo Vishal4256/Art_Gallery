@@ -30,6 +30,9 @@ import artistRoutes from './routes/artistRoutes.js';
 import exhibitionRoutes from './routes/exhibitionRoutes.js';
 import reservationRoutes from './routes/reservationRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+
+import contactRoutes from './routes/contactRoutes.js';
 
 // Mount routes
 app.use('/api/auth', authRoutes);
@@ -38,6 +41,8 @@ app.use('/api/artists', artistRoutes);
 app.use('/api/exhibitions', exhibitionRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Make uploads folder static
 app.use('/uploads', express.static(path.join(process.cwd(), '/uploads')));
@@ -46,6 +51,11 @@ app.use('/uploads', express.static(path.join(process.cwd(), '/uploads')));
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
+
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

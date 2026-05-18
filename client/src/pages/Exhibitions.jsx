@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import api from '../services/api';
@@ -79,7 +80,7 @@ const Exhibitions = () => {
             <div key={ex._id} className={`exhibition-card flex flex-col md:flex-row gap-12 lg:gap-20 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
               <div className="md:w-3/5 overflow-hidden border border-[var(--border-main)] bg-[var(--bg-surface)]">
                 <img 
-                  src={ex.image} 
+                  src={ex.image?.startsWith('http') ? ex.image : `${api.defaults.baseURL.replace('/api', '')}${ex.image}`} 
                   alt={ex.title} 
                   className="w-full h-[500px] object-cover transition-transform duration-1000 hover:scale-105" 
                 />
@@ -90,9 +91,9 @@ const Exhibitions = () => {
                 </div>
                 <h2 className="text-5xl lg:text-6xl text-[var(--text-main)] font-serif mb-8 leading-tight tracking-tight uppercase">{ex.title}</h2>
                 <p className="text-[var(--text-muted)] font-light leading-relaxed mb-10 text-lg">{ex.description}</p>
-                <button className="self-start text-[10px] uppercase tracking-[0.3em] text-[var(--text-main)] border-b border-[var(--text-main)] hover:opacity-60 transition-all pb-2 font-bold italic">
+                <Link to={`/exhibitions/${ex._id}`} className="self-start text-[10px] uppercase tracking-[0.3em] text-[var(--text-main)] border-b border-[var(--text-main)] hover:opacity-60 transition-all pb-2 font-bold italic">
                   Explore Exhibition Details
-                </button>
+                </Link>
               </div>
             </div>
           );

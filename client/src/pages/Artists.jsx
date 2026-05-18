@@ -39,6 +39,15 @@ const Artists = () => {
     fetchArtists();
   }, []);
 
+  const getImageUrl = (artist) => {
+    if (!artist.image || artist.image.includes('undefined')) {
+      return `https://ui-avatars.com/api/?name=${encodeURIComponent(artist.name)}&background=111&color=fff&size=512`;
+    }
+    if (artist.image.startsWith('http')) return artist.image;
+    if (artist.image.startsWith('/uploads')) return `${api.defaults.baseURL.replace('/api', '')}${artist.image}`;
+    return artist.image;
+  };
+
   useGSAP(() => {
     if (!loading && artists.length > 0) {
       gsap.fromTo('.artist-card', {
@@ -74,7 +83,7 @@ const Artists = () => {
           <Link key={artist._id} to={`/artists/${artist._id}`} className="artist-card group cursor-pointer block">
             <div className="relative overflow-hidden aspect-[4/5] mb-8 border border-[var(--border-main)] bg-[var(--bg-surface)]">
               <img 
-                src={artist.image} 
+                src={getImageUrl(artist)} 
                 alt={artist.name} 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
               />
