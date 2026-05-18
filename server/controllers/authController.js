@@ -56,3 +56,27 @@ export const registerUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid user data');
   }
 });
+
+// @desc    Reset password
+// @route   POST /api/auth/reset-password
+// @access  Public
+export const resetPassword = asyncHandler(async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  if (!email || !newPassword) {
+    res.status(400);
+    throw new Error('Please provide email and new password');
+  }
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    res.status(404);
+    throw new Error('User with this email does not exist');
+  }
+
+  user.password = newPassword;
+  await user.save();
+
+  res.json({ message: 'Password has been successfully updated!' });
+});
