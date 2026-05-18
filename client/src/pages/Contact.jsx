@@ -61,7 +61,7 @@ const Contact = () => {
         <div className="stagger-reveal space-y-10">
           <div>
             <h3 className="text-xs uppercase tracking-[0.3em] font-sans text-gray-500 mb-2">Visit Us</h3>
-            <p className="text-white text-lg font-light">123 Art District Avenue<br />New York, NY 10001</p>
+            <p className="text-white text-lg font-light">Pachhati Bodhgaya<br />Gaya, Bihar 824231</p>
           </div>
           
           <div>
