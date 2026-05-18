@@ -23,13 +23,7 @@ const userSchema = new mongoose.Schema({
   wishlist: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Artwork'
-  }],
-  resetOTP: {
-    type: String
-  },
-  resetOTPExpire: {
-    type: Date
-  }
+  }]
 }, { timestamps: true });
 
 // Match user entered password to hashed password in database
