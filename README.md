@@ -50,7 +50,7 @@ A premium MERN stack virtual museum experience built with React, GSAP, and Node.
 3. **Setup Frontend**
    ```bash
    cd ../client
-   npm install
+   npm install Or npm i
    ```
 4. **Run Development Server**
    - Start Backend: `cd server && npm run dev`
