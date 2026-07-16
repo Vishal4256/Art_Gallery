@@ -44,7 +44,7 @@ A premium MERN stack virtual museum experience built with React, GSAP, and Node.
    Create a `.env` file in the `server` folder:
    ```env
    PORT=5000
-   MONGODB_URI=your_mongodb_uri
+   MONGODB_URI=Give_your_mongo_url
    JWT_SECRET=your_secret_key
    ```
 3. **Setup Frontend**
